@@ -140,7 +140,7 @@
 <script lang="ts">
     import { keypress } from './stores.js';
 
-    const letters = ["a", "b", "c", "č", "ć", "d", "đ", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "r", "s", "š", "t", "u", "v", "Space", "Space", "z", "ž", "Backspace"];
+    const letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "Space", "Space", "Space", "z", "Backspace"];
     function handleClick(event: any) {
         console.log(event.srcElement.innerText)
         keypress.set([event.srcElement.innerText])
