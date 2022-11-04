@@ -1,0 +1,11 @@
+.button {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+body {
+    margin: 1%;
+    margin-bottom: 0;
+}
