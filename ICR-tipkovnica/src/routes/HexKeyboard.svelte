@@ -9,10 +9,10 @@
     display: flex;
     align-items: center;
 }
-#hexGrid {
+:global#hexGrid {
     display: flex;
     flex-wrap: wrap;
-    width: 85%;
+    width: 75%;
     text-align: center;
     margin: 0;
     overflow: hidden;
@@ -21,12 +21,18 @@
     list-style-type: none;
     margin-left: auto;
     margin-right: auto;
+    padding-bottom: 3.5%
 }
 .hex {
     position: relative;
     visibility: hidden;
     outline: 1px solid transparent;
+    width: 14.285%;
+
     /* fix for jagged edges in FF on hover transition */
+}
+.hex:nth-child(13n+8) {
+        margin-left: 7.1425%;
 }
 .hex::after {
     content: '';
@@ -70,83 +76,24 @@
     margin-right: auto;
     width: 100%;
 }
-/*** HEXAGON SIZING AND EVEN ROW INDENTATION *****************************************************************/
-@media (min-width:1201px) {
-    /* <- 5-4  hexagons per row */
-    #hexGrid {
-        padding-bottom: 3.5%
-    }
-    .hex {
-        width: 12.5%;
-        /* = 100 / 5 */
-    }
-    .hex:nth-child(15n+9) {
-        /* first hexagon of even rows */
-        margin-left: 6.25%;
-        /* = width of .hex / 2  to indent even rows */
-    }
-}
-@media (max-width: 1200px) and (min-width:901px) {
-    /* <- 4-3  hexagons per row */
-    #hexGrid {
-        padding-bottom: 5.5%
-    }
-    .hex {
-        width: 25%;
-        /* = 100 / 4 */
-    }
-    .hex:nth-child(7n+5) {
-        /* first hexagon of even rows */
-        margin-left: 12.5%;
-        /* = width of .hex / 2  to indent even rows */
-    }
-}
-@media (max-width: 900px) and (min-width:601px) {
-    /* <- 3-2  hexagons per row */
-    #hexGrid {
-        padding-bottom: 7.4%
-    }
-    .hex {
-        width: 33.333%;
-        /* = 100 / 3 */
-    }
-    .hex:nth-child(5n+4) {
-        /* first hexagon of even rows */
-        margin-left: 16.666%;
-        /* = width of .hex / 2  to indent even rows */
-    }
-}
-@media (max-width: 600px) {
-    /* <- 2-1  hexagons per row */
-    #hexGrid {
-        padding-bottom: 11.2%
-    }
-    .hex {
-        width: 50%;
-        /* = 100 / 3 */
-    }
-    .hex:nth-child(3n+3) {
-        /* first hexagon of even rows */
-        margin-left: 25%;
-        /* = width of .hex / 2  to indent even rows */
-    }
-}
-@media (max-width: 400px) {
-    #hexGrid {
-        font-size: 13px;
-    }
-}
+
 </style>
 <script lang="ts">
     import { keypress } from './stores.js';
-
-    const letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "Space", "Space", "Space", "z", "Backspace"];
+    import { chosenKeyboard } from './stores.js';
+    // const letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "Space", "Space", "Space", "z", "Backspace"];
+    const letters = [".","k","w","m","u","q","'","c","h","t","o","f","z","j","i","e","Space","n","g","b","v","r","s","a","d","Ret",",","x","p","l","y","Shift", ""]
     function handleClick(event: any) {
         console.log(event.srcElement.innerText)
         keypress.set([event.srcElement.innerText])
     }
+    let keyboard = "";
+    chosenKeyboard.subscribe(val =>{
+        console.log(val)
+        keyboard = val
+    })
 </script>
-<div>
+<div style="display: {keyboard == 'hex' ? "flex" : "none"}">
     <ul id="hexGrid" style="overflow: hidden">
         {#each letters as letter}
         <li class="hex" >

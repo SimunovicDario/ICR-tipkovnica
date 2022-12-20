@@ -36,26 +36,41 @@
     <script lang="ts">
         import { onMount } from 'svelte';
         import { wordList } from '../words.js'
+	    import Dropdown from './Dropdown.svelte';
         import { keypress } from './stores';
-    
+        
+        let hexGridWidth = 75;
+        let hexGrid: HTMLElement | null;
+        let showOptions = false;
         onMount(async () => {
             generateWordList();
-            wordsElem = document.getElementById("words");
-            wordsElem?.children[0].classList.add("currentWord")
-            wordsElem?.children[0].scrollIntoView()
+            setTimeout(()=>{
+                wordsElem = document.getElementById("words");
+                wordsElem?.children[0].classList.add("currentWord")
+                wordsElem?.children[0].scrollIntoView()
+            }, 50)
             // userInput.focus()
             keypress.subscribe((valueArr: string[])=>{
                 const value = valueArr[0];
                 if(value==="") return;
                 console.log(value)
-                if(["Space", "Backspace"].includes(value)) {
+                if(["Space", "Ret"].includes(value)) {
                     handleKeyPress(value)
                 } else {
                     userInput += value;
                     compareInputAndWord(value)
                 }
             })
+            hexGrid = document.getElementById("hexGrid")
         });
+        function zoomOut() {
+            hexGridWidth--;
+            hexGrid!.style.width = hexGridWidth + "%";
+        }
+        function zoomIn() {
+            hexGridWidth++;
+            hexGrid!.style.width = hexGridWidth + "%"
+        }
         function getRandomInt(max: number) {
             return Math.floor(Math.random() * max);
         }
@@ -118,7 +133,7 @@
             if(value == "Space") {
                 if(userInput.length == 0) return;
                 goToNextWord();
-            }else if(value == "Backspace") {
+            }else if(value == "Ret") {
                 if(userInput.length === 0){
                     goToPreviousWord();
                     return;
@@ -191,14 +206,28 @@
             currentWordElem.children[currentWordElem.children.length-1].innerHTML = words[currentWordIndex][charIndex] + currentWordElem.children[currentWordElem.children.length-1].innerHTML
             currentWordElem.removeChild(currentWordElem.children[currentWordElem.children.length-2])
         }
+        function options() {
+
+        }
     </script>
-    <div class="word-container">
-        <div class="stat-bar" style="height:20%; border: 1px solid pink; width: 100%; display: flex;">
+    <div id="wordContainer" class="word-container" > 
+        <!-- style="resize: vertical; overflow: hidden;"> -->
+        <div class="stat-bar" style="max-height:28px; min-height:28px; border: 1px solid pink; width: 100%; display: flex;">
             <span style="width: 100%;">{timerLength-elapsedSeconds}</span>
+            <Dropdown showOptions={showOptions}></Dropdown>
+            <button style="margin-left: auto; right:0;" on:click={()=>showOptions = !showOptions}>
+                Options
+            </button>
+            <!-- <button style="margin-left: auto; right:0;" on:click={zoomIn}>
+                <img src="/zoom-in.svg" alt="Zoom in">
+            </button>
+            <button style="margin-left: auto; right:0;" on:click={zoomOut}>
+                <img src="/zoom-out.svg" alt="Zoom out">
+            </button> -->
             <button style="margin-left: auto; right:0;" on:click={restartAll}>Restart</button>
         </div>
-        <div class="word-box-outer" style="height:60%;">
-            <div class="words" id="words">
+        <div class="word-box-outer" style="height:100%; overflow: hidden; box-sizing: border-box;">
+            <div class="words" id="words" style="">
                 {#if !showScoreboard}
                     {#key restart}
                         {#each words as word,i}
@@ -214,9 +243,10 @@
                 {/if}
             </div>
         </div>
+        <!-- <div style="margin-bottom: 0px;margin-top: auto; background-color: white; min-height: 22px;"> -->
         <!-- <div class="input-bar"  style="height:20%; border: 1px solid pink"> -->
             {#if !isDone}
-                <input bind:value={userInput} id="userInput" style="width:99%; text-align: center;"
+                <input bind:value={userInput} id="userInput" style="width:99%; text-align: center;margin-left: auto;margin-right: auto; margin-bottom:0; margin-top: auto;"
                 autocomplete="off" disabled>
             {:else}
                 <span>DONE</span>

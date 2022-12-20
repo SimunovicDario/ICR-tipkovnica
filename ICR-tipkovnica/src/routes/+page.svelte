@@ -1,6 +1,8 @@
 <script lang="ts">
-	import Keyboard from './Keyboard.svelte';
+	import HexKeyboard from './HexKeyboard.svelte';
+	import MacKeyboard from './MacKeyboard.svelte';
 	import WordBox from './WordBox.svelte';
 </script>
 <WordBox></WordBox>
-<Keyboard></Keyboard>
+<HexKeyboard></HexKeyboard>
+<MacKeyboard></MacKeyboard>
