@@ -4,17 +4,19 @@ const manifest = {
 	assets: new Set(["favicon.png","zoom-in.svg","zoom-out.svg"]),
 	mimeTypes: {".png":"image/png",".svg":"image/svg+xml"},
 	_: {
-		entry: {"file":"_app/immutable/start-35ff957e.js","imports":["_app/immutable/start-35ff957e.js","_app/immutable/chunks/index-3efb032d.js","_app/immutable/chunks/singletons-d52cbd44.js","_app/immutable/chunks/index-b9777866.js"],"stylesheets":[],"fonts":[]},
+		entry: {"file":"_app/immutable/start-f4799305.js","imports":["_app/immutable/start-f4799305.js","_app/immutable/chunks/index-b14742d4.js","_app/immutable/chunks/singletons-c83b47a9.js","_app/immutable/chunks/index-3b55d3c1.js"],"stylesheets":[]},
 		nodes: [
-			() => import('./chunks/0-14dc4f1f.js'),
-			() => import('./chunks/1-ffa2fab2.js'),
-			() => import('./chunks/2-2d6ca1a3.js')
+			() => import('./chunks/0-a86a15ac.js'),
+			() => import('./chunks/1-47ade35a.js'),
+			() => import('./chunks/2-98ce349c.js')
 		],
 		routes: [
 			{
 				id: "/",
 				pattern: /^\/$/,
-				params: [],
+				names: [],
+				types: [],
+				optional: [],
 				page: { layouts: [0], errors: [1], leaf: 2 },
 				endpoint: null
 			}

@@ -1,4 +1,4 @@
-import { n as noop, a as safe_not_equal } from './index-dcd0824c.js';
+import { n as noop, a as safe_not_equal } from './index-6ee52f73.js';
 
 const subscriber_queue = [];
 function readable(value, start) {
@@ -49,4 +49,4 @@ function writable(value, start = noop) {
 }
 
 export { readable as r, writable as w };
-//# sourceMappingURL=index2-ab51d8de.js.map
+//# sourceMappingURL=index2-6b2887b2.js.map

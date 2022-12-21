@@ -1,5 +1,5 @@
-import { c as create_ssr_component, v as validate_component, e as escape, d as each, f as add_attribute } from './index-dcd0824c.js';
-import { w as writable } from './index2-ab51d8de.js';
+import { c as create_ssr_component, v as validate_component, e as escape, d as each, f as add_attribute } from './index-6ee52f73.js';
+import { w as writable } from './index2-6b2887b2.js';
 
 const chosenKeyboard = writable("");
 const css$2 = {
@@ -107,11 +107,11 @@ const Dropdown = create_ssr_component(($$result, $$props, $$bindings, slots) => 
     ${showOptions ? `<div class="${"dropdown-content svelte-edwtxx"}"><div class="${"svelte-edwtxx"}">Wordbox
             <div class="${"menu-item svelte-edwtxx"}"><span class="${"menu-item-title svelte-edwtxx"}">Height:</span> 
                 <button style="${"margin-left: auto;"}"><img src="${"/zoom-in.svg"}" alt="${"Zoom in"}"></button>
-                <span style="${"margin-top: auto; margin-bottom: auto; margin-left:5px; margin-right:5px;"}">${escape(wordContainer?.height)}</span>
+                <span style="${"margin-top: auto; margin-bottom: auto; margin-left:5px; margin-right:5px;"}">${escape(wordContainer == null ? void 0 : wordContainer.height)}</span>
                 <button style="${"right:0;"}"><img src="${"/zoom-out.svg"}" alt="${"Zoom out"}"></button></div>
             <div class="${"menu-item svelte-edwtxx"}"><span class="${"menu-item-title svelte-edwtxx"}">Width:</span> 
                 <button style="${"margin-left: auto; "}"><img src="${"/zoom-in.svg"}" alt="${"Zoom in"}"></button>
-                <span style="${"margin-top: auto; margin-bottom: auto; margin-left:5px; margin-right:5px;"}">${escape(wordContainer?.width)}</span>
+                <span style="${"margin-top: auto; margin-bottom: auto; margin-left:5px; margin-right:5px;"}">${escape(wordContainer == null ? void 0 : wordContainer.width)}</span>
                 <button style="${"right:0;"}"><img src="${"/zoom-out.svg"}" alt="${"Zoom out"}"></button></div></div>
         <div class="${"svelte-edwtxx"}"><input type="${"radio"}" id="${"mac"}" value="${"mac"}" name="${"keyboard"}" ${""}>
             <label for="${"mac"}">MacKenzie</label>
@@ -157,4 +157,4 @@ ${validate_component(QwertyKeyboard, "QwertyKeyboard").$$render($$result, {}, {}
 });
 
 export { Page as default };
-//# sourceMappingURL=_page.svelte-572164ba.js.map
+//# sourceMappingURL=_page.svelte-d93870b1.js.map
