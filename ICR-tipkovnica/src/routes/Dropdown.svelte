@@ -1,8 +1,4 @@
 <style>
-    .dropbtn {
-        height: 100%;
-    }
-    
     /* The container <div> - needed to position the dropdown content */
     .dropdown {
       position: relative;
@@ -47,8 +43,8 @@
     import {chosenKeyboard} from './stores'
 
     export let showOptions = false;
+    let keyboard = "";
     let localStorage: Storage;
-    let keyboard = "mac";
     let hexGrid: {size: number, elem: HTMLElement | null}= {
         size: 75,
         elem: null
@@ -69,7 +65,7 @@
             height: isNaN(parseInt(localStorage.getItem("wordbox-height") ?? "")) ? 20 : parseInt(localStorage.getItem("wordbox-height") ?? ""),
             elem: null
         };
-        keyboard = localStorage.getItem("keyboard") ?? "mac";
+        keyboard = localStorage.getItem("keyboard") ?? "";
         chosenKeyboard.set(keyboard)
         chosenKeyboard.subscribe(val =>{
             keyboard = val
@@ -115,7 +111,6 @@
         if(hexGrid.elem) {
             localStorage.setItem("hexGrid-size", hexGrid.size.toString())
         }
-        console.log(keyboard)
         localStorage.setItem("keyboard",keyboard)
         localStorage.setItem("wordbox-width", wordContainer.width.toString())
         localStorage.setItem("wordbox-height", wordContainer.height.toString())
@@ -163,6 +158,8 @@
             <label for="mac">MacKenzie</label>
             <input type="radio" id="hex" value="hex" name="keyboard" on:click={()=>chosenKeyboard.set("hex")} checked={keyboard == "hex"}>
             <label for="hex">Metropolis</label>
+            <input type="radio" id="qwerty" value="qwerty" name="keyboard" on:click={()=>chosenKeyboard.set("qwerty")} checked={keyboard == "qwerty"}>
+            <label for="qwerty">QWERTY</label>
         </div>
         {#if keyboard == "hex"}
         <div>Keyboard
