@@ -85,7 +85,7 @@
         }
     
         let start: number|null;
-        const timerLength = 60;
+        const timerLength = 120;
         let intervalId: any;
         let isDone = false
         let elapsedSeconds = 0;

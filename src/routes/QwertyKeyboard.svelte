@@ -6,7 +6,8 @@
     const letters = [
         ["Q","W","E","R","T","Z","U","I","O","P"],
         ["","A","S","D","F","G","H","J","K","L",""],
-        ["","","Y","X","C","V","B","N","M","","",],
+        ["","","Y","X","C","V","B","N","M","","Ret",],
+        ["","Space",""]
     ]
     function handleClick(event: any) {
         console.log(event.srcElement.innerText)
