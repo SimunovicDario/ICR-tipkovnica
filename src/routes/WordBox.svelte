@@ -43,7 +43,7 @@
         let hexGrid: HTMLElement | null;
         let showOptions = false;
         onMount(async () => {
-            generateWordList();
+            // generateWordList();
             setTimeout(()=>{
                 wordsElem = document.getElementById("words");
                 wordsElem?.children[0].classList.add("currentWord")
@@ -74,12 +74,12 @@
         function getRandomInt(max: number) {
             return Math.floor(Math.random() * max);
         }
-        function generateWordList() {
-            words = [];
-            for(let i = 0; i <250; i++) {
-                words.push(wordList[getRandomInt(wordList.length)])
-            }
-        }
+        // function generateWordList() {
+        //     words = [];
+        //     for(let i = 0; i <250; i++) {
+        //         words.push(wordList[getRandomInt(wordList.length)])
+        //     }
+        // }
         function restartAll() {
             window.location.reload();
         }
@@ -114,7 +114,7 @@
             userIncorrect = 0;
             userTypedWords.forEach((word: String, index: number)=>{
                 for(let i = 0; i<word.length; i++) {
-                    if(word[i] === words[index][i]) 
+                    if(word[i].toUpperCase() === words[index][i].toUpperCase()) 
                         userCorrect++;
                     else
                         userIncorrect++;
@@ -122,8 +122,8 @@
             })
             showScoreboard = true;
         }
-    
-        let words: string[] = [""]
+        const text = "Jako tezak tekst koji sluzi za testiranje";
+        let words: string[] = text.split(" ")
         let wordsElem: HTMLElement | null;
         let currentWordIndex: number = 0;
         let userInput = "";
@@ -147,7 +147,7 @@
             wordsElem?.children[currentWordIndex].classList.toggle("currentWord")
             previousElemChildren.push([...wordsElem!.children[currentWordIndex].childNodes]);
             wordsElem!.children[currentWordIndex].innerHTML = words[currentWordIndex]
-            if(userInput !== words[currentWordIndex]) {
+            if(userInput !== words[currentWordIndex].toUpperCase()) {
                 wordsElem?.children[currentWordIndex].classList.add("incorrect");
                 wordsElem?.children[currentWordIndex].classList.remove("correct");
             } else {
@@ -189,7 +189,7 @@
             let currentWordElem = wordsElem!.children[currentWordIndex];
             const span = document.createElement("span");
             span.innerText = currentWord[charIndex];
-            if(lastTypedChar === currentWord[charIndex]) {
+            if(lastTypedChar === currentWord[charIndex].toUpperCase()) {
                 span.classList.add("correct")
                 span.classList.remove("incorrect")
             } else {
