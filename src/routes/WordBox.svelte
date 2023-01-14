@@ -122,7 +122,7 @@
             })
             showScoreboard = true;
         }
-        const text = "Jako tezak tekst koji sluzi za testiranje";
+        const text = "Jane has felt an outcast her whole young life Her courage is tested once again when she arrives at Thornfield Hall where she has been hired by the brooding proud Edward Rochester to care for his ward Adele Jane finds herself drawn to his troubled yet kind spirit She falls in love But there is a terrifying secret inside the gloomy forbidding Thornfield Hall";
         let words: string[] = text.split(" ")
         let wordsElem: HTMLElement | null;
         let currentWordIndex: number = 0;
