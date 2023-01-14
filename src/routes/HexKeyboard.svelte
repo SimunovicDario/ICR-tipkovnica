@@ -82,7 +82,7 @@
     import { keypress } from './stores.js';
     import { chosenKeyboard } from './stores.js';
     // const letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "Space", "Space", "Space", "z", "Backspace"];
-    const letters = [".","k","w","m","u","q","'","c","h","t","o","f","z","j","i","e","Space","n","g","b","v","r","s","a","d","Ret",",","x","p","l","y","Shift", ""]
+    const letters = [".","K","W","M","U","Q","'","C","H","T","O","F","Z","J","I","E","Space","N","G","B","V","R","S","A","D","Ret",",","x","p","l","y","Shift", ""]
     function handleClick(event: any) {
         console.log(event.srcElement.innerText)
         keypress.set([event.srcElement.innerText])
@@ -93,12 +93,12 @@
         keyboard = val
     })
 </script>
-<div style="display: {keyboard == 'hex' ? "flex" : "none"}">
+<div style="display: {keyboard == 'hex' ? "flex" : "none"};">
     <ul id="hexGrid" style="overflow: hidden">
         {#each letters as letter}
         <li class="hex" >
             <div class="hexIn">
-                <a class="hexLink" on:click={handleClick} style="background-color: grey" href="/" id="{letter}">
+                <a class="hexLink" on:click={handleClick} style="font-size: 2rem; background-color: grey" href="/" id="{letter}">
                     <div class="button">
                         <h2 style="color:black">
                             {letter}
