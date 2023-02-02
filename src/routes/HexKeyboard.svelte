@@ -2,6 +2,9 @@
 * {
     margin: 0;
     padding: 0;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
 }
 .button {
     height: 100%;
@@ -82,7 +85,8 @@
     import { keypress } from './stores.js';
     import { chosenKeyboard } from './stores.js';
     // const letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "Space", "Space", "Space", "z", "Backspace"];
-    const letters = [".","K","W","M","U","Q","'","C","H","T","O","F","Z","J","I","E","Space","N","G","B","V","R","S","A","D","Ret",",","x","p","l","y","Shift", ""]
+    // const letters = [".","K","W","M","U","Q","'","C","H","T","O","F","Z","J","I","E","Space","N","G","B","V","R","S","A","D","Ret",",","x","p","l","y","Shift", ""]
+    const letters = ["","W","G","J","V","X","","P","O","R","E","F","Q","D","N","S","Space","I","U","B","L","A","H","T","K","Ret","","Z","M","Y","C","",""]
     function handleClick(event: any) {
         console.log(event.srcElement.innerText)
         keypress.set([event.srcElement.innerText])
