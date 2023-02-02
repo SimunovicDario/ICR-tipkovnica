@@ -34,7 +34,7 @@
 	}
 
 	let start: number | null;
-	const timerLength = 60;
+	const timerLength = 300;
 	let intervalId: any;
 	let isDone = false;
 	let elapsedSeconds = 0;
@@ -74,8 +74,8 @@
 		showScoreboard = true;
 	}
 	// const text =
-	// 	'Jane has felt an outcast her whole young life Her courage is tested once again when she arrives at Thornfield Hall where she has been hired by the brooding proud Edward Rochester to care for his ward Adele Jane finds herself drawn to his troubled yet kind spirit She falls in love But there is a terrifying secret inside the gloomy forbidding Thornfield Hall';
-	const text ='At the dawn of the next world war, a plane crashes on an uncharted island, stranding a group of schoolboys. At first, with no adult supervision, their freedom is something to celebrate; this far from civilization the boys can do anything they want. Anything. They attempt to forge their own society, failing, however, in the face of terror, sin and evil. And';
+	// 	'';
+	const text ='Jane has felt an outcast her whole young life Her courage is tested once again when she arrives at Thornfield Hall where she has been hired by the brooding proud Edward Rochester to care for his ward Adele Jane finds herself drawn to his troubled yet kind spirit She falls in love But there is a terrifying secret inside the gloomy forbidding Thornfield Hall At the dawn of the next world war a plane crashes on an uncharted island stranding a group of schoolboys At first with no adult supervision their freedom is something to celebrate this far from civilization the boys can do anything they want Anything They attempt to forge their own society failing however in the face of terror sin and evil And';
 	let words: string[] = text.split(' ');
 	let wordsElem: HTMLElement | null;
 	let currentWordIndex: number = 0;
